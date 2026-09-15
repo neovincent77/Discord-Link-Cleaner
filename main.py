@@ -96,7 +96,15 @@ def ensure_json_valid(filepath: str, default_content: dict) -> None:
         # Copy over valid keys from default_config
         for key, default_value in default_content.items():
             if key in data:
-                cleaned_data[key] = data[key]
+                if isinstance(default_value, list) and isinstance(data[key], list):
+                    merged = list(dict.fromkeys(data[key] + default_value))
+                    cleaned_data[key] = merged
+
+                    if merged != data[key]:
+                        modified = True
+                        print(f"Updated '{key}' in {filepath}")
+                else:
+                    cleaned_data[key] = data[key]
             else:
                 cleaned_data[key] = default_value
                 modified = True
