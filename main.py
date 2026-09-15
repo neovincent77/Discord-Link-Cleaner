@@ -374,8 +374,6 @@ with open(CONFIG_PATH, 'r', encoding="utf-8") as f:
     
 with open(TRACKERS_PATH, 'r', encoding="utf-8") as f:
     trackers = json.load(f)
-
-print("CURRENT TRACKERS:", json.dumps(trackers, indent=2))
     
 bot_token = os.getenv("DISCORD_TOKEN", "").strip() or config.get("bot_token", default_config["bot_token"]).strip()
 mention_reply_author = config.get("mention_reply_author", default_config["mention_reply_author"])
