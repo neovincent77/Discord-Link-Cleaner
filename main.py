@@ -439,7 +439,7 @@ def build_param_index(tracker_map):
     index = {}
     for company, params in tracker_map.items():
         for param in params:
-            index[param] = company
+            index[param.lower()] = company
     return index
 
 def clean_url(url):
