@@ -278,7 +278,6 @@ def load_trackers():
     with open(TRACKERS_PATH, 'r', encoding="utf-8") as f:
         trackers = json.load(f)
     PARAM_INDEX = {param.lower(): company for company, params in trackers.items() for param in params}
-    print("STKN TEST:", PARAM_INDEX.get("stkn"))
 
 def save_trackers():
     """Save current trackers to JSON file."""
