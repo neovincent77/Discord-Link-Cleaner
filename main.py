@@ -445,8 +445,16 @@ def clean_url(url):
     kept = []
     removed = {}
 
+    hostname = (parsed.hostname or "").lower()
+
     for key, value in parse_qsl(parsed.query, keep_blank_values=True):
         owner = get_tracker_owner(key)
+
+        # YouTube share tracking
+        if hostname in {"youtube.com", "www.youtube.com", "m.youtube.com", "youtu.be"}:
+            if key.lower() in {"si", "is"}:
+                owner = "YouTube"
+
         if owner:
             removed.setdefault(owner, []).append(key)
         else:
