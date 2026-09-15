@@ -398,11 +398,41 @@ except re.error as e:
 def has_link(message: str) -> bool:
     return bool(REGEX.search(message))
 
+TRACKER_PREFIXES = {
+    "utm_": "Google",
+    "gad_": "Google",
+    "hsa_": "HubSpot",
+}
+
+
+def get_tracker_owner(param_name: str):
+    """
+    Return the owner of a known tracking parameter.
+
+    Checks exact tracker names first, then known tracker families.
+    Returns None if the parameter is not a known tracker.
+    """
+    key = param_name.lower()
+
+    # Exact tracker from trackers.json
+    owner = PARAM_INDEX.get(key)
+    if owner:
+        return owner
+
+    # Known tracker families
+    for prefix, owner in TRACKER_PREFIXES.items():
+        if key.startswith(prefix):
+            return owner
+
+    return None
+
 def has_trackers(url):
     parsed = urlparse(url)
+
     for key, _ in parse_qsl(parsed.query, keep_blank_values=True):
-        if key.lower() in PARAM_INDEX:
+        if get_tracker_owner(key):
             return True
+
     return False
 
 def build_param_index(tracker_map):
@@ -418,7 +448,7 @@ def clean_url(url):
     removed = {}
 
     for key, value in parse_qsl(parsed.query, keep_blank_values=True):
-        owner = PARAM_INDEX.get(key.lower())
+        owner = get_tracker_owner(key)
         if owner:
             removed.setdefault(owner, []).append(key)
         else:
