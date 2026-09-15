@@ -380,8 +380,6 @@ mention_reply_author = config.get("mention_reply_author", default_config["mentio
 require_links = config.get("require_links", default_config["require_links"])
 
 PARAM_INDEX = {param.lower(): company for company, params in trackers.items() for param in params}
-print("STKN TEST: THIS IS THE NEW CODE")
-print("STKN VALUE:", PARAM_INDEX.get("stkn"))
 
 try:
     REGEX = re.compile(
