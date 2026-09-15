@@ -144,23 +144,223 @@ default_config = {
 }
 
 default_trackers = {
-    "Google": ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "utm_id", "gclid", "gclsrc", "dclid", "wbraid", "gbraid", "gad_source"],
-    "Meta": ["fbclid", "fb_action_ids", "fb_action_types", "fb_source", "fb_ref", "fb_ad_id", "fb_adset_id", "fb_campaign_id", "igsh", "stkn"],
-    "TikTok": ["ttclid", "tt_content_id", "tt_medium", "tt_campaign_id", "tt_ad_id", "tt_adset_id"],
-    "Microsoft": ["msclkid", "li_fat_id", "li_source", "li_medium", "li_campaign"],
-    "Twitter": ["twclid", "ref_src", "s", "t", "tw_campaign", "tw_source"],
-    "Reddit": ["rdt_cid", "rdt_source", "rdt_medium", "rdt_campaign"],
-    "Snapchat": ["sc_cid", "sc_source", "sc_medium", "sc_campaign"],
-    "Pinterest": ["epik", "pin_campaign", "pin_source"],
-    "Amazon": ["tag", "ascsubtag", "asc_source", "creative", "creativeASIN", "linkCode", "th"],
-    "Mailchimp": ["mc_cid", "mc_eid"],
-    "HubSpot": ["hsa_acc", "hsa_cam", "hsa_grp", "hsa_ad", "hsa_src", "hsa_net", "hsa_ver"],
-    "Adobe": ["s_cid", "ef_id"],
-    "Salesforce": ["pi_campaign_id", "pi_source", "pi_ad_id"],
-    "Shopify": ["shopify", "shopify_app", "shopify_email", "shopify_utm"],
-    "Email": ["mkt_tok", "_hsenc", "_hsmi", "trk", "trkCampaign", "campaign", "source"],
-    "Affiliate": ["aff_id", "affiliate_id", "ref", "ref_id", "referrer", "partner", "partner_id", "click_id", "clickid", "cid", "subid", "sub_id"],
-    "Analytics": ["_ga", "_gl", "_gac", "_gid", "yclid", "rb_clickid", "vero_id", "vero_conv", "oly_anon_id", "oly_enc_id", "appSharePlatform"]
+    # ---------------------------------------------------------------
+    # Google / Google Ads / Google Analytics
+    # ---------------------------------------------------------------
+    "Google": [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content",
+        "utm_id",
+        "utm_source_platform",
+        "utm_creative_format",
+        "utm_marketing_tactic",
+
+        "gclid",
+        "gclsrc",
+        "dclid",
+        "gbraid",
+        "wbraid",
+
+        "gad",
+        "gad_source",
+        "gad_campaignid",
+
+        "_ga",
+        "_gl",
+        "_gac",
+        "_gid"
+    ],
+
+    # ---------------------------------------------------------------
+    # Meta / Facebook / Instagram
+    # ---------------------------------------------------------------
+    "Meta": [
+        "fbclid",
+        "fb_action_ids",
+        "fb_action_types",
+        "fb_source",
+        "fb_ref",
+        "fb_ad_id",
+        "fb_adset_id",
+        "fb_campaign_id",
+
+        "igsh",
+        "igshid",
+
+        "stkn"
+    ],
+
+    # ---------------------------------------------------------------
+    # TikTok
+    # ---------------------------------------------------------------
+    "TikTok": [
+        "ttclid",
+        "tt_content_id",
+        "tt_medium",
+        "tt_campaign_id",
+        "tt_ad_id",
+        "tt_adset_id"
+    ],
+
+    # ---------------------------------------------------------------
+    # Microsoft / Bing Ads
+    # ---------------------------------------------------------------
+    "Microsoft": [
+        "msclkid"
+    ],
+
+    # ---------------------------------------------------------------
+    # LinkedIn
+    # ---------------------------------------------------------------
+    "LinkedIn": [
+        "li_fat_id",
+        "li_source",
+        "li_medium",
+        "li_campaign"
+    ],
+
+    # ---------------------------------------------------------------
+    # X / Twitter
+    # ---------------------------------------------------------------
+    "Twitter": [
+        "twclid",
+        "tw_campaign",
+        "tw_source",
+        "ref_src"
+    ],
+
+    # ---------------------------------------------------------------
+    # Reddit
+    # ---------------------------------------------------------------
+    "Reddit": [
+        "rdt_cid",
+        "rdt_source",
+        "rdt_medium",
+        "rdt_campaign"
+    ],
+
+    # ---------------------------------------------------------------
+    # Snapchat
+    # ---------------------------------------------------------------
+    "Snapchat": [
+        "sc_cid",
+        "sc_source",
+        "sc_medium",
+        "sc_campaign"
+    ],
+
+    # ---------------------------------------------------------------
+    # Pinterest
+    # ---------------------------------------------------------------
+    "Pinterest": [
+        "epik",
+        "pin_campaign",
+        "pin_source"
+    ],
+
+    # ---------------------------------------------------------------
+    # Amazon
+    # ---------------------------------------------------------------
+    "Amazon": [
+        "tag",
+        "ascsubtag",
+        "asc_source",
+        "creative",
+        "creativeASIN",
+        "linkCode"
+    ],
+
+    # ---------------------------------------------------------------
+    # Mailchimp
+    # ---------------------------------------------------------------
+    "Mailchimp": [
+        "mc_cid",
+        "mc_eid"
+    ],
+
+    # ---------------------------------------------------------------
+    # HubSpot
+    # ---------------------------------------------------------------
+    "HubSpot": [
+        "hsa_acc",
+        "hsa_cam",
+        "hsa_grp",
+        "hsa_ad",
+        "hsa_src",
+        "hsa_tgt",
+        "hsa_kw",
+        "hsa_mt",
+        "hsa_net",
+        "hsa_ver",
+        "_hsenc",
+        "_hsmi"
+    ],
+
+    # ---------------------------------------------------------------
+    # Adobe
+    # ---------------------------------------------------------------
+    "Adobe": [
+        "s_cid",
+        "ef_id"
+    ],
+
+    # ---------------------------------------------------------------
+    # Salesforce / Pardot
+    # ---------------------------------------------------------------
+    "Salesforce": [
+        "pi_campaign_id",
+        "pi_source",
+        "pi_ad_id"
+    ],
+
+    # ---------------------------------------------------------------
+    # Shopify
+    # ---------------------------------------------------------------
+    "Shopify": [
+        "shopify",
+        "shopify_app",
+        "shopify_email",
+        "shopify_utm"
+    ],
+
+    # ---------------------------------------------------------------
+    # Email / Marketing platforms
+    # ---------------------------------------------------------------
+    "Email": [
+        "mkt_tok",
+        "vero_id",
+        "vero_conv",
+        "oly_anon_id",
+        "oly_enc_id"
+    ],
+
+    # ---------------------------------------------------------------
+    # Affiliate / click attribution
+    #
+    # Keep this conservative. Generic names such as ref/source/cid
+    # can be legitimate site functionality.
+    # ---------------------------------------------------------------
+    "Affiliate": [
+        "aff_id",
+        "affiliate_id",
+        "partner_id",
+        "click_id",
+        "clickid",
+        "subid",
+        "sub_id"
+    ],
+
+    # ---------------------------------------------------------------
+    # Other known analytics / advertising IDs
+    # ---------------------------------------------------------------
+    "Analytics": [
+        "yclid",
+        "rb_clickid",
+        "appSharePlatform"
+    ]
 }
 
 ensure_file_exists(CONFIG_PATH, default_config)
